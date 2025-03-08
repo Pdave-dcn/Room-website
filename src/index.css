@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+@theme {
+  --font-league-spartan: "League Spartan", "Sans-serif";
+  --color-dark-gray: hsl(0, 0%, 63%);
+  --color-very-dark-gray: hsl(0, 0%, 27%);
+}
