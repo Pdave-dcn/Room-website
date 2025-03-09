@@ -10,7 +10,7 @@ const IntroSection = () => {
         your vision to life. Create a room in your own style with our collection
         and make your property a reflection of you and what you love.
       </p>
-      <a href="#" className="flex gap-5">
+      <a href="#" className="flex gap-5 shop__link">
         <span className="text-md font-medium tracking-[11px]">SHOP NOW</span>
         <img src="images/icon-arrow.svg" alt="Arrow icon" />
       </a>

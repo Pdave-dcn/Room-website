@@ -11,11 +11,17 @@ const Gallery = () => {
         alt="Image of furniture"
         className="hidden lg:block lg:h-full lg:w-full lg:object-cover"
       />
-      <div className="absolute right-0 bottom-0 lg:right-[-140px]">
-        <button type="button" className="bg-black px-5 py-4 lg:px-7">
+      <div className="absolute right-0 bottom-0 lg:right-[-136px]">
+        <button
+          type="button"
+          className="bg-black px-5 py-4 lg:px-[27px] hover:bg-very-dark-gray cursor-pointer transition duration-150"
+        >
           <img src="images/icon-angle-left.svg" alt="Left arrow" />
         </button>
-        <button type="button" className="bg-black px-5 py-4 lg:px-7">
+        <button
+          type="button"
+          className="bg-black px-5 py-4 lg:px-[27px] hover:bg-very-dark-gray cursor-pointer transition duration-150"
+        >
           <img src="images/icon-angle-right.svg" alt="Right arrow" />
         </button>
       </div>

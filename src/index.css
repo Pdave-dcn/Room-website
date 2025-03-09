@@ -5,3 +5,14 @@
   --color-dark-gray: hsl(0, 0%, 63%);
   --color-very-dark-gray: hsl(0, 0%, 27%);
 }
+
+.shop__link:hover span {
+  color: var(--color-dark-gray);
+  transition: all 0.15s ease;
+}
+
+.shop__link:hover img {
+  filter: brightness(0) saturate(100%) invert(74%) sepia(0%) saturate(1076%)
+    hue-rotate(164deg) brightness(89%) contrast(82%);
+  transition: all 0.15s ease;
+}

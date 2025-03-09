@@ -43,13 +43,25 @@ const NavBar = () => {
       )}
 
       {/**Desktop navigation*/}
-      <div className="hidden lg:flex gap-13 py-11 px-15">
+      <div className="hidden lg:flex gap-13 py-11 px-15 items-center">
         <img src="images/logo.svg" alt="Logo" className="object-contain" />
         <div className="flex gap-8 text-white">
-          <a href="#home">home</a>
-          <a href="#shop">shop</a>
-          <a href="#about">about</a>
-          <a href="#contact">contact</a>
+          <div className="flex flex-col gap-1 items-center group">
+            <a href="#home">home</a>
+            <div className="w-5 h-[2px] bg-white opacity-0 group-hover:opacity-100 transition-opacity" />
+          </div>
+          <div className="flex flex-col gap-1 items-center group">
+            <a href="#shop">shop</a>
+            <div className="w-5 h-[2px] bg-white opacity-0 group-hover:opacity-100 transition-opacity" />
+          </div>
+          <div className="flex flex-col gap-1 items-center group">
+            <a href="#about">about</a>
+            <div className="w-5 h-[2px] bg-white opacity-0 group-hover:opacity-100 transition-opacity" />
+          </div>
+          <div className="flex flex-col gap-1 items-center group">
+            <a href="#contact">contact</a>
+            <div className="w-5 h-[2px] bg-white opacity-0 group-hover:opacity-100 transition-opacity" />
+          </div>
         </div>
       </div>
     </nav>
