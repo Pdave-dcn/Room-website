@@ -6,6 +6,10 @@
   --color-very-dark-gray: hsl(0, 0%, 27%);
 }
 
+body {
+  font-family: var(--font-league-spartan);
+}
+
 .shop__link:hover span {
   color: var(--color-dark-gray);
   transition: all 0.15s ease;
