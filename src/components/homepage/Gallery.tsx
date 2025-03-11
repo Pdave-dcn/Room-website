@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
 
 type GalleryType = {
   currentImage: number;
@@ -32,7 +33,7 @@ const Gallery = ({ currentImage, setCurrentImage }: GalleryType) => {
         setCurrentImage((prev) =>
           prev === desktopFurnitureImages.length - 1 ? 0 : prev + 1
         ),
-      5000
+      10000
     );
 
     return () => {
@@ -53,20 +54,57 @@ const Gallery = ({ currentImage, setCurrentImage }: GalleryType) => {
     );
   };
 
+  const imageVariant = {
+    hidden: {
+      opacity: 0,
+      x: 50,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.4 },
+    },
+    exit: {
+      opacity: 0,
+      x: -50,
+      transition: { duration: 0.4 },
+    },
+  };
+
   return (
     <div className="relative h-full z-10">
       {/**Mobile image*/}
-      <img
-        src={`${mobileFurnitureImages[currentImage]}`}
-        alt="Image of furniture"
-        className="lg:hidden"
-      />
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={`mobile-image-${currentImage}`}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          variants={imageVariant}
+        >
+          <img
+            src={`${mobileFurnitureImages[currentImage]}`}
+            alt="Furniture showcase"
+            className="lg:hidden"
+          />
+        </motion.div>
+      </AnimatePresence>
 
-      <img
-        src={`${desktopFurnitureImages[currentImage]}`}
-        alt="Image of furniture"
-        className="hidden lg:block lg:h-full lg:w-full lg:object-cover"
-      />
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={`mobile-image-${currentImage}`}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          variants={imageVariant}
+        >
+          <img
+            src={`${desktopFurnitureImages[currentImage]}`}
+            alt="Furniture showcase"
+            className="hidden lg:block lg:h-full lg:w-full lg:object-cover"
+          />
+        </motion.div>
+      </AnimatePresence>
 
       <div className="absolute right-0 bottom-0 lg:right-[-136px]">
         <button

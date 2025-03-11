@@ -1,3 +1,5 @@
+import { motion, AnimatePresence } from "motion/react";
+
 const IntroSection = ({ currentImage }: { currentImage: number }) => {
   const intros = [
     {
@@ -16,17 +18,58 @@ const IntroSection = ({ currentImage }: { currentImage: number }) => {
         "Our modern furniture store provide a high level of quality. Our company has invested in advanced technology to ensure that every product is made as perfect and as consistent as possible. With three decades of experience in this industry, we understand what customers want for their home and office.",
     },
   ];
+
+  const fadeInContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.4,
+        staggerChildren: 0.3,
+        delayChildren: 0.3,
+      },
+    },
+    exit: { opacity: 0 },
+  };
+
+  const fadeInChild = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.4,
+      },
+    },
+  };
+
   return (
-    <div className="py-14 px-7 lg:h-full lg:flex lg:flex-col lg:justify-center lg:px-20">
-      <h1 className="text-4xl font-bold mb-3.5">
-        {intros[currentImage].title}
-      </h1>
-      <p className="text-dark-gray mb-8">{intros[currentImage].description}</p>
-      <a href="#" className="flex gap-5 shop__link">
-        <span className="text-md font-medium tracking-[11px]">SHOP NOW</span>
-        <img src="images/icon-arrow.svg" alt="Arrow icon" />
-      </a>
-    </div>
+    <>
+      <div className="py-14 px-7 lg:h-full lg:flex lg:flex-col lg:justify-center lg:px-20 overflow-x-hidden">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={`image-${currentImage}`}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={fadeInContainer}
+          >
+            <motion.h1
+              variants={fadeInChild}
+              className="text-4xl font-bold mb-3.5"
+            >
+              {intros[currentImage].title}
+            </motion.h1>
+            <motion.p variants={fadeInChild} className="text-dark-gray mb-8">
+              {intros[currentImage].description}
+            </motion.p>
+          </motion.div>
+        </AnimatePresence>
+        <a href="#" className="flex gap-5 shop__link">
+          <span className="text-md font-medium tracking-[11px]">SHOP NOW</span>
+          <img src="images/icon-arrow.svg" alt="Arrow icon" />
+        </a>
+      </div>
+    </>
   );
 };
 
