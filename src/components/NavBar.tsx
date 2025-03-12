@@ -20,7 +20,7 @@ const NavBar = () => {
           <img src="images/logo.svg" alt="Logo" />
         </div>
       ) : (
-        <div className="relative z-50 flex justify-between bg-white py-11 px-7">
+        <div className="relative z-50 flex gap-15 bg-white py-11 px-7">
           <button
             type="button"
             aria-label="Close navigation"
