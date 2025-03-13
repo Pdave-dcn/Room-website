@@ -20,3 +20,7 @@ body {
     hue-rotate(164deg) brightness(89%) contrast(82%);
   transition: all 0.15s ease;
 }
+
+button {
+  cursor: pointer;
+}
