@@ -1,6 +1,11 @@
 import React from "react";
 import CategorySection from "./CategorySection";
 import { motion } from "motion/react";
+import {
+  slideLeftContainerVariants,
+  slideLeftChildVariants,
+  fadeInUpVariants,
+} from "./animations";
 
 const Shop: React.FC = () => {
   const basePath = import.meta.env.BASE_URL || "/Room-website/";
@@ -12,20 +17,38 @@ const Shop: React.FC = () => {
 
   return (
     <div>
-      <div className="lg:flex">
+      {/**Hero section*/}
+      <div className="lg:flex overflow-x-hidden">
         <div className="lg:flex-1">
-          <div className="relative bg-[url('/images/shop-page/mobile-hero.webp')] bg-no-repeat w-full h-[550px] lg:bg-linear-to-b lg:from-dark-gray lg:to-[#DECBA4]">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="relative bg-[url('/images/shop-page/mobile-hero.webp')] bg-no-repeat w-full h-[550px] lg:bg-gradient-to-b lg:from-dark-gray lg:to-[#DECBA4]"
+          >
             <div className="absolute inset-0 bg-black/50 lg:hidden"></div>
-            <div className="relative flex flex-col gap-4 lg:gap-6.5 pt-30 lg:pt-50 text-white z-10 px-7 lg:px-15">
-              <h1 className="text-3xl font-bold lg:text-4xl">
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={slideLeftContainerVariants}
+              className="relative flex flex-col gap-4 lg:gap-6.5 pt-30 lg:pt-50 text-white z-10 px-7 lg:px-15"
+            >
+              <motion.h1
+                variants={slideLeftChildVariants}
+                className="text-3xl font-bold lg:text-4xl"
+              >
                 SHOP OUR EXCLUSIVE COLLECTIONS
-              </h1>
-              <p className="lg:text-lg">
+              </motion.h1>
+              <motion.p
+                variants={slideLeftChildVariants}
+                className="lg:text-lg"
+              >
                 Discover premium furniture designed to enhance your space with
                 elegance and functionality. Whether you're looking for a modern
                 touch or timeless classics, we have something for every style.
-              </p>
+              </motion.p>
               <motion.button
+                variants={slideLeftChildVariants}
                 whileTap={{ scale: 0.95 }}
                 whileHover={{ scale: 1.1 }}
                 type="button"
@@ -33,9 +56,14 @@ const Shop: React.FC = () => {
               >
                 SHOP NOW
               </motion.button>
-            </div>
-          </div>
-          <div className="hidden lg:flex w-90">
+            </motion.div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+            className="hidden lg:flex w-90"
+          >
             <img
               src={getImagePath("images/shop-page/desktop-hero-3.webp")}
               alt="Furniture image"
@@ -44,21 +72,32 @@ const Shop: React.FC = () => {
               src={getImagePath("images/shop-page/desktop-hero-2.webp")}
               alt="Furniture image"
             />
-          </div>
+          </motion.div>
         </div>
 
-        <div className="flex-1 hidden lg:flex">
+        <motion.div
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.5, duration: 0.5 }}
+          className="flex-1 hidden lg:flex"
+        >
           <img
             src={getImagePath("images/shop-page/desktop-hero-1.webp")}
             alt="furniture image"
             className="mt-[-300px]"
           />
-        </div>
+        </motion.div>
       </div>
 
-      {/* Main content section with fixed grid layout for desktop */}
-      <div className="lg:grid lg:grid-cols-2">
-        {/* Left content column with fixed width */}
+      {/* Main content section */}
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={fadeInUpVariants}
+        className="lg:grid lg:grid-cols-2"
+      >
+        {/* Left content column */}
         <div className="lg:max-w-full">
           <div>
             <div className="px-7 py-14 lg:px-15">
@@ -118,11 +157,11 @@ const Shop: React.FC = () => {
           </div>
         </div>
 
-        {/* Right column with CategorySection that maintains its width */}
+        {/* Right column */}
         <div className="hidden lg:block">
           <CategorySection />
         </div>
-      </div>
+      </motion.div>
 
       <div className="lg:hidden">
         <div>
