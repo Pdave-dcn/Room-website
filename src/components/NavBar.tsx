@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const basePath = import.meta.env.BASE_URL;
+  const basePath = import.meta.env.BASE_URL || "/Room-website/";
 
   return (
     <nav className="fixed w-full z-20">
@@ -31,7 +31,7 @@ const NavBar = () => {
           <div className="flex gap-7 font-semibold">
             <Link to={`${basePath}`}>home</Link>
             <Link to={`${basePath}shop`}>shop</Link>
-            <a href="#about">about</a>
+            <Link to={`${basePath}about`}>about</Link>
             <a href="#contact">contact</a>
           </div>
         </div>
@@ -57,7 +57,7 @@ const NavBar = () => {
             <div className="w-5 h-[2px] bg-white opacity-0 group-hover:opacity-100 transition-opacity" />
           </div>
           <div className="flex flex-col gap-1 items-center group">
-            <a href="#about">about</a>
+            <Link to={`${basePath}about`}>about</Link>
             <div className="w-5 h-[2px] bg-white opacity-0 group-hover:opacity-100 transition-opacity" />
           </div>
           <div className="flex flex-col gap-1 items-center group">
