@@ -4,11 +4,13 @@ import NavBar from "./components/NavBar";
 import Shop from "./components/shopPage/Shop";
 import About from "./components/aboutPage/About";
 import Contact from "./components/contactPage/Contact";
+import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => {
   const basePath = import.meta.env.BASE_URL || "Room-website";
   return (
     <>
+      <ScrollToTop />
       <header>
         <NavBar />
       </header>

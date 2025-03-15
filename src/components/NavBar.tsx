@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const handleLinkClick = () => {
+    setIsOpen(false);
+  };
   const basePath = import.meta.env.BASE_URL || "/Room-website/";
 
   return (
@@ -29,10 +32,18 @@ const NavBar = () => {
             <img src="images/icon-close.svg" alt="Close icon" />
           </button>
           <div className="flex gap-7 font-semibold">
-            <Link to={`${basePath}`}>home</Link>
-            <Link to={`${basePath}shop`}>shop</Link>
-            <Link to={`${basePath}about`}>about</Link>
-            <Link to={`${basePath}contact`}>contact</Link>
+            <Link to={`${basePath}`} onClick={handleLinkClick}>
+              home
+            </Link>
+            <Link to={`${basePath}shop`} onClick={handleLinkClick}>
+              shop
+            </Link>
+            <Link to={`${basePath}about`} onClick={handleLinkClick}>
+              about
+            </Link>
+            <Link to={`${basePath}contact`} onClick={handleLinkClick}>
+              contact
+            </Link>
           </div>
         </div>
       )}
