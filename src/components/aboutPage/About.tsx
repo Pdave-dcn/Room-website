@@ -6,7 +6,7 @@ import {
   staggerContainerVariants,
 } from "./animations";
 
-const MotionLink = motion(Link);
+const MotionLink = motion.create(Link);
 
 const About = () => {
   const basePath = import.meta.env.BASE_URL || "/Room-website/";
