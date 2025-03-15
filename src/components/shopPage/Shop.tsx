@@ -24,7 +24,7 @@ const Shop: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="relative bg-[url('/images/shop-page/mobile-hero.webp')] bg-no-repeat w-full h-[550px] lg:bg-gradient-to-b lg:from-dark-gray lg:to-[#DECBA4]"
+            className="relative bg-[url('/images/shop-page/mobile-hero.webp')] bg-no-repeat bg-cover w-full h-[550px] lg:bg-gradient-to-b lg:from-dark-gray lg:to-[#DECBA4]"
           >
             <div className="absolute inset-0 bg-black/50 lg:hidden"></div>
             <motion.div
