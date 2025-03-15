@@ -6,7 +6,7 @@ import { useState } from "react";
 const HomePage = () => {
   const [currentImage, setCurrentImage] = useState(0);
   return (
-    <div className="lg:h-full lg:flex lg:flex-col">
+    <div className="w-full lg:h-full lg:flex lg:flex-col">
       <div className="lg:flex lg:flex-1">
         <div className="lg:flex-[1.5] lg:h-full">
           <Gallery

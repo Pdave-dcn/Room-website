@@ -10,7 +10,7 @@ const IntroSection = ({ currentImage }: { currentImage: number }) => {
     {
       title: "We are available all across the globe",
       description:
-        "With stores all over the world, it's easy for you to find furniture for your home or place of business. Locally, we’re in most major cities throughout the country. Find the branch nearest you using our store locator. Any questions? Don't hesitate to contact us today",
+        "With stores all over the world, it's easy for you to find furniture for your home or place of business. Locally, we're in most major cities throughout the country. Find the branch nearest you using our store locator. Any questions? Don't hesitate to contact us today",
     },
     {
       title: "Manufactured with the best materials",
@@ -44,30 +44,39 @@ const IntroSection = ({ currentImage }: { currentImage: number }) => {
 
   return (
     <>
-      <div className="py-14 px-7 lg:h-full lg:flex lg:flex-col lg:justify-center lg:px-20 overflow-x-hidden">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={`image-${currentImage}`}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            variants={fadeInContainer}
-          >
-            <motion.h1
-              variants={fadeInChild}
-              className="text-4xl font-bold mb-3.5"
+      <div className="py-14 px-7 lg:h-full lg:flex lg:flex-col lg:justify-center lg:px-20 overflow-hidden">
+        {/* Fixed height container to prevent layout shifts */}
+        <div className="min-h-[270px] md:min-h-[230px] lg:min-h-[250px]">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`image-${currentImage}`}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              variants={fadeInContainer}
+              className="h-full"
             >
-              {intros[currentImage].title}
-            </motion.h1>
-            <motion.p variants={fadeInChild} className="text-dark-gray mb-8">
-              {intros[currentImage].description}
-            </motion.p>
-          </motion.div>
-        </AnimatePresence>
-        <a href="#" className="flex gap-5 shop__link">
-          <span className="text-md font-medium tracking-[11px]">SHOP NOW</span>
-          <img src="images/icon-arrow.svg" alt="Arrow icon" />
-        </a>
+              <motion.h1
+                variants={fadeInChild}
+                className="text-4xl font-bold mb-3.5"
+              >
+                {intros[currentImage].title}
+              </motion.h1>
+              <motion.p variants={fadeInChild} className="text-dark-gray mb-8">
+                {intros[currentImage].description}
+              </motion.p>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+        {/* Shop now link in a fixed position */}
+        <div className="mt-4">
+          <a href="#" className="flex gap-5 shop__link">
+            <span className="text-md font-medium tracking-[11px]">
+              SHOP NOW
+            </span>
+            <img src="images/icon-arrow.svg" alt="Arrow icon" />
+          </a>
+        </div>
       </div>
     </>
   );

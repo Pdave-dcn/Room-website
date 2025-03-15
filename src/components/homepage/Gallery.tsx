@@ -20,7 +20,8 @@ const Gallery = ({ currentImage, setCurrentImage }: GalleryType) => {
   ];
 
   useEffect(() => {
-    const intervalOne = setInterval(
+    // Using just one interval to avoid conflicts
+    const interval = setInterval(
       () =>
         setCurrentImage((prev) =>
           prev === mobileFurnitureImages.length - 1 ? 0 : prev + 1
@@ -28,19 +29,10 @@ const Gallery = ({ currentImage, setCurrentImage }: GalleryType) => {
       5000
     );
 
-    const intervalTwo = setInterval(
-      () =>
-        setCurrentImage((prev) =>
-          prev === desktopFurnitureImages.length - 1 ? 0 : prev + 1
-        ),
-      10000
-    );
-
     return () => {
-      clearInterval(intervalOne);
-      clearInterval(intervalTwo);
+      clearInterval(interval);
     };
-  }, [mobileFurnitureImages, desktopFurnitureImages]);
+  }, [mobileFurnitureImages.length, setCurrentImage]);
 
   const handleNextImage = () => {
     setCurrentImage((prev) =>
@@ -72,41 +64,49 @@ const Gallery = ({ currentImage, setCurrentImage }: GalleryType) => {
   };
 
   return (
-    <div className="relative h-full z-10">
-      {/**Mobile image*/}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={`mobile-image-${currentImage}`}
-          initial="hidden"
-          animate="visible"
-          exit="exit"
-          variants={imageVariant}
-        >
-          <img
-            src={`${mobileFurnitureImages[currentImage]}`}
-            alt="Furniture showcase"
-            className="lg:hidden"
-          />
-        </motion.div>
-      </AnimatePresence>
+    <div className="relative h-full">
+      {/* Mobile image */}
+      <div className="lg:hidden h-[300px] sm:h-[400px]">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={`mobile-image-${currentImage}`}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={imageVariant}
+            className="h-full w-full"
+          >
+            <img
+              src={`${mobileFurnitureImages[currentImage]}`}
+              alt="Furniture showcase"
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
+        </AnimatePresence>
+      </div>
 
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={`mobile-image-${currentImage}`}
-          initial="hidden"
-          animate="visible"
-          exit="exit"
-          variants={imageVariant}
-        >
-          <img
-            src={`${desktopFurnitureImages[currentImage]}`}
-            alt="Furniture showcase"
-            className="hidden lg:block lg:h-full lg:w-full lg:object-cover"
-          />
-        </motion.div>
-      </AnimatePresence>
+      {/* Desktop image */}
+      <div className="hidden lg:block h-full">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={`desktop-image-${currentImage}`}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={imageVariant}
+            className="h-full w-full"
+          >
+            <img
+              src={`${desktopFurnitureImages[currentImage]}`}
+              alt="Furniture showcase"
+              className="h-full w-full object-cover"
+            />
+          </motion.div>
+        </AnimatePresence>
+      </div>
 
-      <div className="absolute right-0 bottom-0 lg:right-[-136px]">
+      {/* Navigation buttons */}
+      <div className="absolute right-0 bottom-0 lg:right-[-136px] z-20">
         <button
           type="button"
           onClick={handlePreviousImage}
