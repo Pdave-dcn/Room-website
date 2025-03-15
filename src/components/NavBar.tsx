@@ -32,7 +32,7 @@ const NavBar = () => {
             <Link to={`${basePath}`}>home</Link>
             <Link to={`${basePath}shop`}>shop</Link>
             <Link to={`${basePath}about`}>about</Link>
-            <a href="#contact">contact</a>
+            <Link to={`${basePath}contact`}>contact</Link>
           </div>
         </div>
       )}
@@ -61,7 +61,7 @@ const NavBar = () => {
             <div className="w-5 h-[2px] bg-white opacity-0 group-hover:opacity-100 transition-opacity" />
           </div>
           <div className="flex flex-col gap-1 items-center group">
-            <a href="#contact">contact</a>
+            <Link to={`${basePath}contact`}>contact</Link>
             <div className="w-5 h-[2px] bg-white opacity-0 group-hover:opacity-100 transition-opacity" />
           </div>
         </div>

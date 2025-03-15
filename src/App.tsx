@@ -3,6 +3,7 @@ import HomePage from "./components/homepage/HomePage";
 import NavBar from "./components/NavBar";
 import Shop from "./components/shopPage/Shop";
 import About from "./components/aboutPage/About";
+import Contact from "./components/contactPage/Contact";
 
 const App = () => {
   const basePath = import.meta.env.BASE_URL || "Room-website";
@@ -16,6 +17,7 @@ const App = () => {
           <Route path={`${basePath}`} element={<HomePage />} />
           <Route path={`${basePath}shop`} element={<Shop />} />
           <Route path={`${basePath}about`} element={<About />} />
+          <Route path={`${basePath}contact`} element={<Contact />} />
         </Routes>
       </main>
     </>
